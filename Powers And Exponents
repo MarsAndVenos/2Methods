@@ -1,0 +1,45 @@
+//** Required package class namespace */
+package powers.and.exponents;
+
+import javax.swing.JOptionPane;
+public class PowersAndExponents
+{
+
+    /**
+     * Main method for the project
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        final String TITLE = "Powers and Exponents ";
+        Start(TITLE);
+        double Base = Double.valueOf(Input()).doubleValue();
+        double Exponents = Double.valueOf(Input2()).doubleValue();
+        double Power = Math.pow(Base, Exponents);
+        output("The base " + Base + " to the exponent of " + Exponents + " - " + Power);
+        End(TITLE);
+        
+        
+    }
+    private static void Start(String TITLE) {
+        JOptionPane.showMessageDialog(null, "Welcome to the " + 
+                TITLE);
+    }
+    
+    private static String Input() {
+        return JOptionPane.showInputDialog("Enter base ");
+    }
+
+    private static String Input2() {
+        return JOptionPane.showInputDialog("Enter Exponents ");
+    }
+
+    private static void output(String Base) {
+        JOptionPane.showMessageDialog(null, Base);
+    }
+
+    private static void End(String TITLE) {
+        JOptionPane.showMessageDialog(null, "Thanks for using " + 
+                TITLE);
+    }
