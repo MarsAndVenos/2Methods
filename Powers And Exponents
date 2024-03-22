@@ -4,7 +4,7 @@ package powers.and.exponents;
 import javax.swing.JOptionPane;
 public class PowersAndExponents
 {
-
+    static final String TITLE = "Powers and Exponents ";
     /**
      * Main method for the project
      * 
@@ -12,34 +12,78 @@ public class PowersAndExponents
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        final String TITLE = "Powers and Exponents ";
-        Start(TITLE);
-        double Base = Double.valueOf(Input()).doubleValue();
-        double Exponents = Double.valueOf(Input2()).doubleValue();
-        double Power = Math.pow(Base, Exponents);
-        output("The base " + Base + " to the exponent of " + Exponents + " - " + Power);
-        End(TITLE);
         
+        Start();
+        
+        double Base = Double.valueOf
+        (Input()).doubleValue();
+        
+        double Exponents = Double.valueOf
+        (Input2()).doubleValue();
+        
+        End();
+        Program();
         
     }
-    private static void Start(String TITLE) {
-        JOptionPane.showMessageDialog(null, "Welcome to the " + 
-                TITLE);
-    }
+    private static void Start() {
+        output( "Welcome to the " + TITLE);
+        }
+                
     
     private static String Input() {
-        return JOptionPane.showInputDialog("Enter base ");
+        
+        return JOptionPane.showInputDialog(null,
+                "Enter base ",
+                TITLE,
+                JOptionPane.QUESTION_MESSAGE);
     }
 
     private static String Input2() {
-        return JOptionPane.showInputDialog("Enter Exponents ");
+        return JOptionPane.showInputDialog(null,
+                "Enter Exponents ",
+                TITLE,
+                JOptionPane.QUESTION_MESSAGE);
     }
 
-    private static void output(String Base) {
-        JOptionPane.showMessageDialog(null, Base);
+    private static void Power(double Base, double Exponents) {
+        output("The base " + Base + " to the exponent of " + Exponents + " - " 
+                + Math.pow(Base, Exponents));
+                
     }
 
-    private static void End(String TITLE) {
-        JOptionPane.showMessageDialog(null, "Thanks for using " + 
-                TITLE);
+    private static void End() {
+            output("Thanks for using " + TITLE);
+                
     }
+   
+    
+    private static boolean yesNo(String text) {
+                int response = JOptionPane.showConfirmDialog(null,
+                text,TITLE, 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE);
+    if 
+            (response == JOptionPane.YES_OPTION) { return true;           
+      
+   private static boolean PlayAgain() {
+       return yesNo("Do you want play again?");
+   }
+   
+   private static void output(String text) {
+       JOptionPane.showMessageDialog(
+               null,text,
+               TITLE,
+               JOptionPane.PLAIN_MESSAGE);
+   }     
+
+    private static void Program() {
+    do{
+        double Base = Double.valueOf
+        (Input()).doubleValue();
+        
+        double Exponents = Double.valueOf
+        (Input2()).doubleValue();
+    }
+        while (PlayAgain() == true);
+    }
+}
