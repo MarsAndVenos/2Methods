@@ -14,16 +14,8 @@ public class PowersAndExponents
         // TODO code application logic here
         
         Start();
-        
-        double Base = Double.valueOf
-        (Input()).doubleValue();
-        
-        double Exponents = Double.valueOf
-        (Input2()).doubleValue();
-        
-        End();
         Program();
-        
+        End();
     }
     private static void Start() {
         output( "Welcome to the " + TITLE);
@@ -45,27 +37,26 @@ public class PowersAndExponents
                 JOptionPane.QUESTION_MESSAGE);
     }
 
-    private static void Power(double Base, double Exponents) {
-        output("The base " + Base + " to the exponent of " + Exponents + " - " 
-                + Math.pow(Base, Exponents));
-                
-    }
-
     private static void End() {
             output("Thanks for using " + TITLE);
                 
     }
-   
-    
+  
     private static boolean yesNo(String text) {
                 int response = JOptionPane.showConfirmDialog(null,
-                text,TITLE, 
+                text,
+                TITLE, 
                 JOptionPane.YES_NO_OPTION, 
                 JOptionPane.QUESTION_MESSAGE);
     if 
-            (response == JOptionPane.YES_OPTION) { return true;           
+            (response == JOptionPane.YES_OPTION) { return true;  
+    }
+    else{
+        return false;
+    }
+    }
       
-   private static boolean PlayAgain() {
+     private static boolean PlayAgain() {
        return yesNo("Do you want play again?");
    }
    
@@ -75,15 +66,19 @@ public class PowersAndExponents
                TITLE,
                JOptionPane.PLAIN_MESSAGE);
    }     
-
+ 
     private static void Program() {
     do{
+
         double Base = Double.valueOf
         (Input()).doubleValue();
         
         double Exponents = Double.valueOf
         (Input2()).doubleValue();
+         output("The base " + Base + " to the exponent of " + Exponents + " - " 
+                + Math.pow(Base, Exponents));
     }
         while (PlayAgain() == true);
     }
 }
+ 
