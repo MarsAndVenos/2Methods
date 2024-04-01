@@ -21,22 +21,38 @@ public class PowersAndExponents
         output( "Welcome to the " + TITLE);
         }
                 
+    private static String input(String text) {
+        // Store the user's response in a variable from what they typed into
+        // a input dialog
+        String value = JOptionPane.showInputDialog(null, 
+                text,TITLE,JOptionPane.QUESTION_MESSAGE);
+        // Create an error message if they user did not enter a value correctly
+        final String ERROR = "Error, please enter again\n\n";
+        // Force a loop if the user left the dialog empty and clicked "ok" or
+        // they clicked "cancel" or the "X"
+        while (value == null || value.equals("")) {
+            // Have the user enter again (with error message attached)
+            value = JOptionPane.showInputDialog(null,ERROR + text,TITLE,
+                        JOptionPane.QUESTION_MESSAGE);
+        }
+        // Once they have entered a value, return it
+        return value;
+    }
     
-    private static String Input() {
-        
-        return JOptionPane.showInputDialog(null,
-                "Enter base ",
-                TITLE,
-                JOptionPane.QUESTION_MESSAGE);
+ private static int inputInteger(String text) {
+        // Store user's response from what they inputted in a dialog
+        String value = input(text);
+        // Create an error message if they user did not enter a value correctly
+        final String ERROR = "Error, please enter again\n\n";
+        // Force a loop if the user left the dialog empty
+        while (value.equals("")) {
+            value = input(ERROR + text);
+        }
+        // Now convert what the user entered into an integer
+        int number = Integer.parseInt(value);
+        return number;        // Then return that number value      
     }
-
-    private static String Input2() {
-        return JOptionPane.showInputDialog(null,
-                "Enter Exponents ",
-                TITLE,
-                JOptionPane.QUESTION_MESSAGE);
-    }
-
+ 
     private static void End() {
             output("Thanks for using " + TITLE);
                 
@@ -70,15 +86,12 @@ public class PowersAndExponents
     private static void Program() {
     do{
 
-        double Base = Double.valueOf
-        (Input()).doubleValue();
+        double Base = inputInteger("Enter a base");
+        double Exponents = inputInteger("Enter an Exponent");
         
-        double Exponents = Double.valueOf
-        (Input2()).doubleValue();
          output("The base " + Base + " to the exponent of " + Exponents + " - " 
                 + Math.pow(Base, Exponents));
     }
         while (PlayAgain() == true);
     }
 }
- 
