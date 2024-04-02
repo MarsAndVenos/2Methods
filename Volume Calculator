@@ -1,0 +1,109 @@
+//** Required package class namespace */
+package volume.calculator;
+
+import javax.swing.JOptionPane;
+
+
+/*
+ * VolumeCalculator - description
+ * 
+ * @author Antonio Nalevaiko
+ * @since Apr 2, 2024
+*/
+public class VolumeCalculator
+{
+
+   
+    static final String TITLE = "Volume Calculator";
+    
+    
+    
+    /**
+     * Main method for the project
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Start();
+        Program();
+        End();
+    }
+    private static void Start() {
+        output("Welcome to the " + TITLE);
+    }
+    
+    private static String input(String text) {
+        // Store the user's response in a variable from what they typed into
+        // a input dialog
+        String value = JOptionPane.showInputDialog(null, 
+                text,TITLE,JOptionPane.QUESTION_MESSAGE);
+        // Create an error message if they user did not enter a value correctly
+        final String ERROR = "Error, please enter again\n\n";
+        // Force a loop if the user left the dialog empty and clicked "ok" or
+        // they clicked "cancel" or the "X"
+        while (value == null || value.equals("")) {
+            // Have the user enter again (with error message attached)
+            value = JOptionPane.showInputDialog(null,ERROR + text,TITLE,
+                        JOptionPane.QUESTION_MESSAGE);
+        }
+        // Once they have entered a value, return it
+        return value;
+    }
+    
+ private static double inputInteger(String text) {
+        // Store user's response from what they inputted in a dialog
+        String value = input(text);
+        // Create an error message if they user did not enter a value correctly
+        final String ERROR = "Error, please enter again\n\n";
+        // Force a loop if the user left the dialog empty
+        while (value.equals("")) {
+            value = input(ERROR + text);
+        }
+        // Now convert what the user entered into an integer
+        double number = Double.parseDouble(value);
+        return number;        // Then return that number value      
+    }
+ 
+    private static void End() {
+            output("Thanks for using " + TITLE);
+                
+    }
+  
+    private static boolean yesNo(String text) {
+                int response = JOptionPane.showConfirmDialog(null,
+                text,
+                TITLE, 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE);
+    if 
+            (response == JOptionPane.YES_OPTION) { return true;  
+    }
+    else{
+        return false;
+    }
+    }
+      
+     private static boolean PlayAgain() {
+       return yesNo("Do you want play again?");
+   }
+   
+   private static void output(String text) {
+       JOptionPane.showMessageDialog(
+               null,text,
+               TITLE,
+               JOptionPane.PLAIN_MESSAGE);
+   }     
+
+    private static void Program() {
+        do{
+            double radius = inputInteger("Enter radius");
+            double height = inputInteger("Enter height");
+            output("The volume of the Cylinder is " + Math.PI * Math.pow(radius, 2)
+                    * height);
+          }
+        while (PlayAgain() == true);
+    }
+        
+    }
+       
