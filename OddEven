@@ -1,32 +1,19 @@
+//** Required package class namespace */
+package oddeven;
 
-/** required package class namespace */
-package cs30ssamplecode;
-
-/** required imports */
 import javax.swing.JOptionPane;
 
 
-/**
- * CS30SMethods.java - A sample of some code to try from up to the end of the 
- * methods unit. As you solve problems, some common tasks keep coming up like:
- *    - inputting a number
- *    - making randoms
- * Etc. and you find you are writing simple dialog boxes or trying something 
- * a little fancier with graphical type things. These methods are just an 
- * example of some of the code tried in class or when helping students. It is
- * not a definitive code, may have bugs and has room for improvement as well
- * as your own personal touches. But it does give you something to try to help
- * with your problem solving.
- *
- * @author Mr. Wachs
- * @since Nov. 14, 2019, 10:29:49 a.m.
- */
-public class Unit2Methods
+/*
+ * OddEven - description
+ * 
+ * @author Antonio Nalevaiko
+ * @since Mar 20, 2024
+*/
+public class OddEven
 {
-
-    // REUSABLE VARIABLES and METHODS (below this line)........................
     
-    static final String TITLE = "Sample App";
+    static final String TITLE = "Odd/Even Game";
     
     /**
      * Main method for the project
@@ -208,36 +195,38 @@ public class Unit2Methods
         return answer;                              // return final value     
     }
 
-    // PROBLEM SPECIFIC VARIABLES and METHODS (below this line)................
- 
-    /**
-     * The main logic for this program
-     */
-    private static void program() {
-        do {
-            // variables:
-            String text = "Sample program...\n\n";
-            
-            // text input dialogs
-            String  s1 = input("Enter string");
-            int     n1 = inputInteger("Enter integer");
-            double  n2 = inputDouble("Enter double");
-            int     n3 = random(1, 5);
-            int     n4 = random(5, 10);
-            boolean b1 = inRange(5, n3, n4);
-            boolean b2 = isEven(5);     
-            boolean b3 = yesNo("Do you understand?");
-            
-            // prepare output results:
-            text += "String = "            + s1 + "\n";
-            text += "int    = "            + n1 + "\n";
-            text += "double = "            + n2 + "\n";
-            text += "5 between " + n3 + " and " + n4 + " = " + b1 + "\n";
-            text += "5 is even = "         + b2 + "\n";      
-            text += "Do you understand = " + b3 + "\n";  
-            
-            output(text);
-        } while (playAgain() == true);
+      static int points =1000;
+    
+       private static void program() {
+           do{
+               
+               int bet = inputInteger("You have " + points +
+                       " points\n\nEnter a bet");
+               while (inRange(bet, 1, points) == false) {
+                   bet = inputInteger("Error\n\nYou have " + points +
+                           " points\n\nEnter a bet:");
+               }
+                   int die1 = random(1, 6);
+                   int die2 = random(1, 6);
+                   int sum = die1 + die2;
+                   
+                   if (isEven(sum) == false) {
+                       points = points + (bet * 2);
+                   
+                   output("You rolled a " + die1 + " end a " + die2 + " for a total"
+                           + " of " + sum + "\n\nYou Win!\nYou have " + points + " points");
+                   }
+                   else{
+                       points = points - bet;
+                       output("You rolled a " + die1 + " end a " + die2 + " for a total"
+                       + " of " + sum + "\n\nYou lose!\nYou have " + points + " points");
+                   }
+                   if(points == 0){
+                       output("sorry, you are out of points");
+                   }
+               
+              
+           }while (playAgain() == true);
     }
-
+    
 }
